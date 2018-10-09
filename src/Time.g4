@@ -1,5 +1,6 @@
 grammar Time;
-r       : TIME+;
+END     : TIME+;
+XYZ     : [xyz];
 TIME    : ([0-1][0-9] | [2][0-3]) ':' [0-5][0-9] (':' [0-5][0-9])? ;
 WS      : [ \t\n\r]+ -> skip;
 ABC     : [A-Z]+ -> skip;
