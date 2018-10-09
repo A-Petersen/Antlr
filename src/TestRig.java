@@ -12,6 +12,7 @@ public class TestRig {
         else input = new ANTLRInputStream(System.in);
         Time lex = new Time(input);
         Token t;
+
         do {
             t = lex.nextToken();
             ST templateText = new ST("<Line>\t<CharPos>\t<Type>\t<Name>\t<Text>");
@@ -22,5 +23,11 @@ public class TestRig {
             templateText.add("Text", t.getText());
             System.out.println(templateText.render());
         } while ( t.getType()!= Token.EOF );
+
+        STGroup test = new STGroupFile("stringTemplateGroup.stg");
+        ST st = test.getInstanceOf("abc");
+        st.add("xyz", "hello!");
+        System.out.println(st.render());
+
     }
 }
