@@ -10,14 +10,15 @@ public class TestRig {
         CharStream input;
         if (args.length>0) input = new ANTLRFileStream(args[0]);
         else input = new ANTLRInputStream(System.in);
-        TimeLexer lex = new TimeLexer(input);
+        Time lex = new Time(input);
         Token t;
         do {
             t = lex.nextToken();
             ST templateText = new ST("<Line>\t<CharPos>\t<Type>\t<Name>\t<Text>");
             templateText.add("Line", t.getLine());
-            templateText.add("CharPos", t.getCharPositionInLine());
+            templateText.add("CharPos", t.getCharPositionInLine() + 1);
             templateText.add("Type", t.getType());
+
             templateText.add("Text", t.getText());
             System.out.println(templateText.render());
         } while ( t.getType()!= Token.EOF );
