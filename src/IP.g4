@@ -1,5 +1,5 @@
 lexer grammar IP;
-PI      : IPPIECE ':' IPPIECE ':' IPPIECE ':' IPPIECE ;
+PI      : IPPIECE '.' IPPIECE '.' IPPIECE '.' IPPIECE ;
 WS      : [ \t\n\r]+ -> skip;
 ABC     : [A-Z]+ -> skip;
 ABCD    : [a-z]+ -> skip;

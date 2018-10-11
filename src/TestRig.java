@@ -10,7 +10,7 @@ public class TestRig {
         CharStream input;
         if (args.length>0) input = new ANTLRFileStream(args[0]);
         else input = new ANTLRInputStream(System.in);
-        Time lex = new Time(input);
+        IP lex = new IP(input);
         Token t;
 
         do {
