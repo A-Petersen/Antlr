@@ -20,16 +20,24 @@ public class TestRig_2 {
 
         HalsteadCalc calcLex = new HalsteadCalc(lex);
 
-        System.out.println( "Anzahl aller Operanden: " + calcLex.getAmountOperands() +
-                "\nAnzahl aller Operatoren: " + calcLex.getAmountOperators() +
-                "\nAnzahl verschiedener Operanden: " + calcLex.getUniqueOperands() +
-                "\nAnzahl verschiedener Operatoren: " + calcLex.getUniqueOperators());
+        STGroup stG = new STGroupFile("a2/stringTemplateHalstead.stg");
+        ST opFormat = stG.getInstanceOf("opFormat");
+        opFormat.add("op", calcLex.getAll());
 
+        ST halsteadPara = stG.getInstanceOf("halsteadPara");
+        halsteadPara.add("aOperators", calcLex.getAmountOperators());
+        halsteadPara.add("aOperands", calcLex.getAmountOperands());
+        halsteadPara.add("aUniqueOperators", calcLex.getUniqueOperators());
+        halsteadPara.add("aUniqueOperands", calcLex.getUniqueOperands());
 
-//        STGroup test = new STGroupFile("a1/stringTemplateGroup.stg");
-//        ST st = test.getInstanceOf("abc");
-//        st.add("xyz", "hello, ").add("uvw", "du!");
-//        System.out.println(st.render());
+        ST halsteadMetric = stG.getInstanceOf("HalsteadMetric");
+        halsteadMetric.add("len", calcLex.getLength());
+        halsteadMetric.add("vocab", calcLex.getVocabulary());
+        halsteadMetric.add("volume", calcLex.getVolume());
+        halsteadMetric.add("difficulty", calcLex.getDifficulty());
+        halsteadMetric.add("effort", calcLex.getEffort());
+
+        System.out.println(opFormat.render() + halsteadPara.render() + halsteadMetric.render());
 
     }
 

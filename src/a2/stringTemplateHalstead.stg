@@ -1,0 +1,37 @@
+opFormat(op)
+    ::= <<
+    .
+    --------------------------------------------------
+
+    Auflistung aller unterschiedlichen Operatoren und
+    Operanden samt deren Häufigkeiten:
+
+    <op.keys:{k |  <op.(k)>x  [ <k> ]}; separator="\n">
+    >>
+
+halsteadPara(aOperators, aOperands, aUniqueOperators, aUniqueOperands)
+    ::= <<
+    .
+    --------------------------------------------------
+
+    Halstead-Parameter:
+
+    Anzahl aller Operatoren:            <aOperators>
+    Anzahl aller Operanden:             <aOperands>
+    Anzahl verschiedener Operatoren:    <aUniqueOperators>
+    Anzahl verschiedener Operanden:     <aUniqueOperands>
+    >>
+
+HalsteadMetric(len, vocab, volume, difficulty, effort)
+    ::= <<
+    .
+    --------------------------------------------------
+
+    Halstead-Metriken:
+
+    Programmlänge:                      <len>
+    Vokabulargröße:                     <vocab>
+    Volumen des Programms:              <volume>
+    Schwierigkeitsgrad des Programms:   <difficulty>
+    Implementierungsaufwand:            <effort>
+    >>
