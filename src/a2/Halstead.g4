@@ -1,8 +1,8 @@
 grammar Halstead;
 
-OPERAND     : IDENTIFIER | TYPESPEC | CONSTANT;
 OPERATOR    : (SCSPEC | TYPE_QUAL | RESERVED | OPERATORS)
                 {setText(getText().replaceAll(" ", "").replaceAll("\n", "").replaceAll("\t", ""));};
+OPERAND     : IDENTIFIER | TYPESPEC | CONSTANT;
 IGNORE      : COMMENT | LINE_COMMENT | BRACKETS_CLOSED | INCLUDE_COLUMN | KEYWORD | COLON;
 
 

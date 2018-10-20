@@ -1,4 +1,4 @@
-opFormat(op)
+opFormat(operators, operands)
     ::= <<
     .
     --------------------------------------------------
@@ -6,7 +6,11 @@ opFormat(op)
     Auflistung aller unterschiedlichen Operatoren und
     Operanden samt deren Häufigkeiten:
 
-    <op.keys:{k |  <op.(k)>x  [ <k> ]}; separator="\n">
+    Operatoren:
+    <operators.keys:{k |  <operators.(k)>x  [ <k> ]}; separator="\n">
+
+    Operanden:
+    <operands.keys:{k |  <operands.(k)>x  [ <k> ]}; separator="\n">
     >>
 
 halsteadPara(aOperators, aOperands, aUniqueOperators, aUniqueOperands)

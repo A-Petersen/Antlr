@@ -22,7 +22,8 @@ public class TestRig_2 {
 
         STGroup stG = new STGroupFile("a2/stringTemplateHalstead.stg");
         ST opFormat = stG.getInstanceOf("opFormat");
-        opFormat.add("op", calcLex.getAll());
+        opFormat.add("operands", calcLex.getAllOperands());
+        opFormat.add("operators", calcLex.getAllOperators());
 
         ST halsteadPara = stG.getInstanceOf("halsteadPara");
         halsteadPara.add("aOperators", calcLex.getAmountOperators());

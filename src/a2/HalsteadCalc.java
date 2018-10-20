@@ -21,7 +21,8 @@ public class HalsteadCalc {
     private double effort;
     private Multiset<String> operators = multiSet();
     private Multiset<String> operands = multiSet();
-    private java.util.Map<String, Integer> all = new HashMap<>();
+    private java.util.Map<String, Integer> allOperators = new HashMap<>();
+    private java.util.Map<String, Integer> allOperands = new HashMap<>();
 
     HalsteadCalc(HalsteadLexer hsLex)
     {
@@ -31,12 +32,12 @@ public class HalsteadCalc {
             if (t.getType() == 1)
             {
                 operands = operands.insert(t.getText());
-                all.put(t.getText(), operands.getMap().get(t.getText()));
+                allOperands.put(t.getText(), operands.getMap().get(t.getText()));
             }
             if (t.getType() == 2)
             {
                 operators = operators.insert(t.getText());
-                all.put(t.getText(), operators.getMap().get(t.getText()));
+                allOperators.put(t.getText(), operators.getMap().get(t.getText()));
             }
         } while ( t.getType()!= Token.EOF );
 
@@ -58,6 +59,7 @@ public class HalsteadCalc {
 
     private double volume_V(int vocab, int len)
     {
+        System.out.println(log(4)/log(2));
         return len*(log(vocab)/log(2));
     }
 
@@ -110,7 +112,11 @@ public class HalsteadCalc {
         return operators;
     }
 
-    public java.util.Map<String, Integer> getAll() {
-        return all;
+    public java.util.Map<String, Integer> getAllOperands() {
+        return allOperands;
+    }
+
+    public java.util.Map<String, Integer> getAllOperators() {
+        return allOperators;
     }
 }
