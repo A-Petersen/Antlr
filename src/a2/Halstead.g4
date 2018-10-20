@@ -1,8 +1,9 @@
-grammar HalsteadLexer;
+grammar Halstead;
 
 OPERAND     : IDENTIFIER | TYPESPEC | CONSTANT;
-OPERATOR    : SCSPEC | TYPE_QUAL | RESERVED | OPERATORS;
-IGNORE      : COMMENT | LINE_COMMENT | BRACKETS_CLOSED | INCLUDE_COLUMN | KEYWORD | ':';
+OPERATOR    : (SCSPEC | TYPE_QUAL | RESERVED | OPERATORS)
+                {setText(getText().replaceAll(" ", "").replaceAll("\n", "").replaceAll("\t", ""));};
+IGNORE      : COMMENT | LINE_COMMENT | BRACKETS_CLOSED | INCLUDE_COLUMN | KEYWORD | COLON;
 
 
 
@@ -20,9 +21,9 @@ SCSPEC          : 'auto' | 'extern' | 'inline' | 'register' | 'static' | 'typede
                     | 'virtual' | 'mutable';
 TYPE_QUAL       : 'const' | 'friend' | 'volatile';
 RESERVED        : 'asm' | 'break' | 'case' | 'class' | 'continue' | 'default'
-                    | 'delete' | 'while(' | 'else' | 'enum' | 'for(' | 'goto'
-                    | 'if(' | 'new' | 'operator' | 'private' | 'protected' | 'public'
-                    | 'return' | 'sizeof' | 'struct' | 'switch(' | 'this' | 'union'
+                    | 'delete' | 'while' WHITESPACE? '(' | 'else' | 'enum' | 'for' WHITESPACE? '(' | 'goto'
+                    | 'if' WHITESPACE? '(' | 'new' | 'operator' | 'private' | 'protected' | 'public'
+                    | 'return' | 'sizeof' | 'struct' | 'switch' WHITESPACE? '(' | 'this' | 'union'
                     | 'namespace' | 'using' | 'try' | 'catch' | 'throw' | 'const_cast'
                     | 'static_cast' | 'dynamic_cast' | 'reinterpret_cast' | 'typeid'
                     | 'template' | 'explicit' | 'true' | 'false' | 'typename';
@@ -37,3 +38,7 @@ LINE_COMMENT    : '//' .*? '|r'? '\n';
 BRACKETS_CLOSED : ')' | ']' | '}';
 INCLUDE_COLUMN  : '#include' .*? '|r'? '\n';
 KEYWORD         : 'do';
+COLON           : ':';
+
+// WHITESPACE
+WHITESPACE      : [ \t\n\r]+ -> skip;
