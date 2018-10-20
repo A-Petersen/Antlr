@@ -29,12 +29,12 @@ public class HalsteadCalc {
         Token t;
         do {
             t = hsLex.nextToken();
-            if (t.getType() == 1)
+            if (t.getType() == 2)
             {
                 operands = operands.insert(t.getText());
                 allOperands.put(t.getText(), operands.getMap().get(t.getText()));
             }
-            if (t.getType() == 2)
+            if (t.getType() == 1)
             {
                 operators = operators.insert(t.getText());
                 allOperators.put(t.getText(), operators.getMap().get(t.getText()));
@@ -48,13 +48,15 @@ public class HalsteadCalc {
         vocabulary = uOperands + uOperators;
         length = aOperands + aOperators;
         volume = volume_V(vocabulary, length);
-        difficulty = diff_D(aOperators, uOperands);
+        difficulty = diff_D(uOperators, uOperands, aOperands);
+//        difficulty = diff_D(22, 30, 122);
         effort = effort_E(volume, difficulty);
     }
 
-    private double diff_D(int aOperators, int uOperands)
+    private double diff_D(int n1, int n2, int N2)
     {
-        return (aOperators/2.0)*(uOperands/2.0);
+        System.out.println(n1 + "." + n2 + "." + N2);
+        return ((double)n1/2.0)*((double)N2/(double)n2);
     }
 
     private double volume_V(int vocab, int len)
