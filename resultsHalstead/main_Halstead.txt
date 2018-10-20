@@ -1,0 +1,53 @@
+    --------------------------------------------------
+
+    Auflistung aller unterschiedlichen Operatoren und
+    Operanden samt deren Häufigkeiten:
+
+    Operatoren:
+
+     1x  [ else ]
+     4x  [ ( ]
+     2x  [ * ]
+     1x  [ if( ]
+     3x  [ { ]
+     4x  [ ; ]
+     1x  [ [ ]
+     2x  [ , ]
+     1x  [ != ]
+     1x  [ = ]
+
+    Operanden:
+
+     2x  [ argc ]
+     1x  [ "Error, Nutzung des Programms : eval1
+    								<expression>" ]
+     3x  [ res ]
+     1x  [ 1 ]
+     1x  [ 2 ]
+     1x  [ eval1 ]
+     1x  [ "Das Ergebnis der Berechnung ist : %d" ]
+     1x  [ char ]
+     1x  [ main ]
+     2x  [ argv ]
+     3x  [ int ]
+     2x  [ printf ]
+
+    --------------------------------------------------
+
+    Halstead-Parameter:
+
+    Anzahl aller Operatoren:            20
+    Anzahl aller Operanden:             19
+    Anzahl verschiedener Operatoren:    10
+    Anzahl verschiedener Operanden:     12
+
+    --------------------------------------------------
+
+    Halstead-Metriken:
+
+    Programmlänge:                      39
+    Vokabulargröße:                     22
+    Volumen des Programms:              173.9178331268546
+    Schwierigkeitsgrad des Programms:   7.916666666666666
+    Implementierungsaufwand:            1376.8495122542654
+    

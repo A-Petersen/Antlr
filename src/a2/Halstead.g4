@@ -1,4 +1,4 @@
-grammar Halstead;
+lexer grammar Halstead;
 
 OPERATOR    : (SCSPEC | TYPE_QUAL | RESERVED | OPERATORS)
                 {setText(getText().replaceAll(" ", "").replaceAll("\n", "").replaceAll("\t", ""));};
@@ -11,10 +11,11 @@ IGNORE      : COMMENT | LINE_COMMENT | BRACKETS_CLOSED | INCLUDE_COLUMN | KEYWOR
 IDENTIFIER      : ID_LETTER (ID_LETTER | DIGIT)*;
 TYPESPEC        : 'bool' | 'char' | 'double' | 'float' | 'int' | 'long' | 'short'
                     | 'signed' | 'unsigned' | 'void';
-CONSTANT        : 'const' .*? ';';
+CONSTANT        : 'const' .*? ';' | '"' (ESC|.)*? '"' | '\'' .*? '\'' | DIGIT;
 
 fragment ID_LETTER  : [a-zA-Z] | '_';
 fragment DIGIT      : [0-9];
+fragment ESC        : '\\"' | '\\\\' ;
 
 // OPERATOR
 SCSPEC          : 'auto' | 'extern' | 'inline' | 'register' | 'static' | 'typedef'

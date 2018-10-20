@@ -1,0 +1,99 @@
+    --------------------------------------------------
+
+    Auflistung aller unterschiedlichen Operatoren und
+    Operanden samt deren Häufigkeiten:
+
+    Operatoren:
+
+     4x  [ && ]
+     1x  [ for( ]
+     1x  [ switch( ]
+     4x  [ else ]
+     1x  [ [ ]
+     4x  [ case ]
+     4x  [ ++ ]
+     3x  [ == ]
+     2x  [ sizeof ]
+     3x  [ break ]
+     2x  [ & ]
+     37x  [ ( ]
+     23x  [ * ]
+     5x  [ if( ]
+     12x  [ + ]
+     20x  [ , ]
+     1x  [ while( ]
+     3x  [ - ]
+     1x  [ / ]
+     46x  [ ; ]
+     12x  [ { ]
+     7x  [ != ]
+     1x  [ < ]
+     15x  [ = ]
+     1x  [ return ]
+
+    Operanden:
+
+     4x  [ lgval2 ]
+     2x  [ '-' ]
+     2x  [ '+' ]
+     1x  [ "Das Ergebnis der Berechnung ist : %d" ]
+     4x  [ val2 ]
+     4x  [ val1 ]
+     1x  [ main ]
+     2x  [ argv ]
+     6x  [ printf ]
+     3x  [ strlen ]
+     2x  [ "%d" ]
+     2x  [ eval1 ]
+     6x  [ zeichenkette1 ]
+     5x  [ zeichenkette2 ]
+     6x  [ wert1 ]
+     1x  [ '\n' ]
+     7x  [ wert2 ]
+     1x  [ '\0' ]
+     2x  [ argc ]
+     2x  [ malloc ]
+     3x  [ res ]
+     2x  [ void ]
+     2x  [ '*' ]
+     3x  [ anfang ]
+     12x  [ ch ]
+     1x  [ "Error: kein <wert1>" ]
+     1x  [ "Error: Division durch 0 nicht moeglich" ]
+     20x  [ i ]
+     1x  [ "Error: kein <wert2>" ]
+     7x  [ resultat ]
+     13x  [ int ]
+     10x  [ 0 ]
+     1x  [ "Error, Nutzung des Programms : eval1
+    								<expression>" ]
+     4x  [ exit ]
+     6x  [ 1 ]
+     1x  [ 2 ]
+     4x  [ extract ]
+     3x  [ nb ]
+     2x  [ sscanf ]
+     12x  [ char ]
+     3x  [ operation ]
+     2x  [ '/' ]
+     1x  [ "Error: kein <operator>" ]
+
+    --------------------------------------------------
+
+    Halstead-Parameter:
+
+    Anzahl aller Operatoren:            213
+    Anzahl aller Operanden:             177
+    Anzahl verschiedener Operatoren:    25
+    Anzahl verschiedener Operanden:     43
+
+    --------------------------------------------------
+
+    Halstead-Metriken:
+
+    Programmlänge:                      390
+    Vokabulargröße:                     68
+    Volumen des Programms:              2374.1105080876328
+    Schwierigkeitsgrad des Programms:   51.45348837209303
+    Implementierungsaufwand:            122156.26742195088
+    

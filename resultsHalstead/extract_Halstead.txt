@@ -1,0 +1,51 @@
+    --------------------------------------------------
+
+    Auflistung aller unterschiedlichen Operatoren und
+    Operanden samt deren Häufigkeiten:
+
+    Operatoren:
+
+     3x  [ ++ ]
+     1x  [ ( ]
+     5x  [ * ]
+     2x  [ { ]
+     8x  [ ; ]
+     1x  [ + ]
+     3x  [ , ]
+     1x  [ while( ]
+     1x  [ < ]
+     4x  [ = ]
+
+    Operanden:
+
+     1x  [ 0 ]
+     1x  [ void ]
+     1x  [ extract ]
+     2x  [ nb ]
+     2x  [ anfang ]
+     2x  [ char ]
+     4x  [ i ]
+     5x  [ zeichenkette1 ]
+     4x  [ zeichenkette2 ]
+     1x  [ '\n' ]
+     3x  [ int ]
+
+    --------------------------------------------------
+
+    Halstead-Parameter:
+
+    Anzahl aller Operatoren:            29
+    Anzahl aller Operanden:             26
+    Anzahl verschiedener Operatoren:    10
+    Anzahl verschiedener Operanden:     11
+
+    --------------------------------------------------
+
+    Halstead-Metriken:
+
+    Programmlänge:                      55
+    Vokabulargröße:                     21
+    Volumen des Programms:              241.57745825283183
+    Schwierigkeitsgrad des Programms:   11.818181818181818
+    Implementierungsaufwand:            2855.0063248061942
+    

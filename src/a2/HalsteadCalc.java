@@ -5,6 +5,8 @@ import multiMenge.Multiset;
 import org.antlr.v4.runtime.Token;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 import static java.lang.Math.log;
 import static multiMenge.ListMultiset.multiSet;
@@ -24,15 +26,16 @@ public class HalsteadCalc {
     private java.util.Map<String, Integer> allOperators = new HashMap<>();
     private java.util.Map<String, Integer> allOperands = new HashMap<>();
 
-    HalsteadCalc(HalsteadLexer hsLex)
+    HalsteadCalc(Halstead hsLex)
     {
         Token t;
         do {
             t = hsLex.nextToken();
             if (t.getType() == 2)
             {
-                operands = operands.insert(t.getText());
-                allOperands.put(t.getText(), operands.getMap().get(t.getText()));
+                String tokenText = t.getText();
+                operands = operands.insert(tokenText);
+                allOperands.put(tokenText, operands.getMap().get(tokenText));
             }
             if (t.getType() == 1)
             {
@@ -40,6 +43,8 @@ public class HalsteadCalc {
                 allOperators.put(t.getText(), operators.getMap().get(t.getText()));
             }
         } while ( t.getType()!= Token.EOF );
+
+
 
         uOperators = operators.distinct();
         uOperands = operands.distinct();
@@ -49,19 +54,16 @@ public class HalsteadCalc {
         length = aOperands + aOperators;
         volume = volume_V(vocabulary, length);
         difficulty = diff_D(uOperators, uOperands, aOperands);
-//        difficulty = diff_D(22, 30, 122);
         effort = effort_E(volume, difficulty);
     }
 
     private double diff_D(int n1, int n2, int N2)
     {
-        System.out.println(n1 + "." + n2 + "." + N2);
         return ((double)n1/2.0)*((double)N2/(double)n2);
     }
 
     private double volume_V(int vocab, int len)
     {
-        System.out.println(log(4)/log(2));
         return len*(log(vocab)/log(2));
     }
 
