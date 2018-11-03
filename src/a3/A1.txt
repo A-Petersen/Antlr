@@ -25,9 +25,3 @@ d) Bestimmen Sie die Assoziativitäten und Prioritäten aller Operatoren!
     - "(expr)" und id, Prio 3
 
 e) Geben Sie den Syntaxbaum für folgende Eingabe an: 10 * 2 / 2 + 4
-
-f) Entwickeln Sie mit ANTLR einen Syntaxerkenner für die Sprache. Der Syntaxerkenner soll die
-Werte der arithmetischen Ausdrücke nicht berechnen, sondern nur deren syntaktische
-Korrektheit prüfen.
-
-g) Schreiben Sie einen JUnit-Test, der die korrekte Funktionsweise des Syntaxerkenners prüft!
