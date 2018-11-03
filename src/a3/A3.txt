@@ -1,0 +1,38 @@
+Aufgabe 1
+
+Gegeben sei folgende Grammatik für die Ausdruckssprache Expr:
+
+𝐍 = {expr}
+𝐓 = { 𝐢𝐧𝐭 ,+ ,−,∗ ,/ , ( , ) }
+𝐏 =
+expr → 𝐢𝐧𝐭
+expr → expr + expr
+expr → expr − expr
+expr → expr ∗ expr
+expr → expr/expr
+expr → (expr)
+
+a) Von welchem Chomsky-Typ ist die Grammatik?
+    - Typ 2 – Grammatik
+
+b) Ist die Grammatik eindeutig?
+    - Nein, mehrdeutig.
+
+c) Geben Sie für jede Regel an, ob sie links- oder rechtsrekursiv ist.
+    - links wie rechts
+
+d) Bestimmen Sie die Assoziativitäten und Prioritäten aller Operatoren!
+    - legt weder die Priorität noch die Assoziativität der Operatoren fest.
+
+e) Geben Sie den Syntaxbaum für folgende Eingabe an: 10 * 2 / 2 + 4
+
+f) Entwickeln Sie mit ANTLR einen Syntaxerkenner für die Sprache. Der Syntaxerkenner soll
+wiederum nur die syntaktische Korrektheit der arithmetischen Ausdrücke prüfen.
+
+g) Vereinbaren Sie die Assoziativitäten und Prioritäten der Operatoren wie folgt:
+
+i. Die Operatoren +, -, *, / sollen linksassoziativ sein.
+ii. Die Klammerung soll die höchste Priorität haben. Dann folgt die Punktrechnung (*, / ) und
+zum Schluss die Strichrechung (+, - ).
+
+h) Schreiben Sie einen JUnit-Test!

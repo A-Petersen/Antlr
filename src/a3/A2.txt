@@ -1,13 +1,4 @@
 Aufgabe 1
-Gegeben sei folgende Grammatik:
-
-Γ6 = N6 , T6 , P6 ,expr
-𝐍𝟔 = {expr, term, fact}
-𝐓𝟔 = { 𝐢𝐧𝐭,+,−,∗,/, ( , ) }
-𝐏𝟔 =
-expr → term | expr + term | expr − term
-term → fact | term ∗ fact | term/fact
-fact → 𝐢𝐧𝐭 | (expr)
 
 a) Von welchem Chomsky-Typ ist die Grammatik?
     - Typ 2 – Grammatik
@@ -16,13 +7,13 @@ b) Ist die Grammatik eindeutig?
     - Ja.
 
 c) Geben Sie für jede Regel an, ob sie links- oder rechtsrekursiv ist.
-    - expr (linksrekursiv)
-    - term (linksrekursiv)
+    - fact (rekursion möglich)
 
 d) Bestimmen Sie die Assoziativitäten und Prioritäten aller Operatoren!
-    - "-" und "+" Links-assoziativ, Prio 1
-    - "*" und "/" Links-assoziativ, Prio 2
-    - "(expr)" und id, Prio 3
+    - "-" und "+" , Prio 1
+    - "*" und "/" , Prio 2
+    - "+" und "-" fact, (expr)", INT, Prio 3
+    - Die Grammatik legt nicht die Assoziativität der Operatoren fest.
 
 e) Geben Sie den Syntaxbaum für folgende Eingabe an: 10 * 2 / 2 + 4
 
