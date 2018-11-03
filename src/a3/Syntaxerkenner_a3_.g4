@@ -7,7 +7,7 @@ decl        : (ID '=')? comp;
 comp        : expr | comp ('<' | '>') comp;
 
 expr        : multExpr | expr '+' multExpr | expr '-' multExpr;
-multExpr    : pow | multExpr '*' fact | multExpr '/' fact;
+multExpr    : pow | multExpr '*' pow | multExpr '/' pow;
 pow         : fact | pow ('^'<assoc=right> pow);
 
 fact        : '('expr')' | INT;
