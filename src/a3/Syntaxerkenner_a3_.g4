@@ -1,14 +1,13 @@
 grammar Syntaxerkenner_a3_;
 import Lexer;
 
-stat        : expr?;
-expr        : verg | term_ | decl;
+stat        : comp | expr | decl;
 
-decl        : (ID '=')? verg;
-verg        : term_ | verg ('<' | '>') verg;
+decl        : (ID '=')? comp;
+comp        : expr | comp ('<' | '>') comp;
 
-term_       : term | term_ '+' term | term_ '-' term;
-term        : potz | term '*' fact | term '/' fact;
-potz        : fact | potz ('^'<assoc=right> potz);
+expr       : multExpr | expr '+' multExpr | expr '-' multExpr;
+multExpr        : pow | multExpr '*' fact | multExpr '/' fact;
+pow        : fact | pow ('^'<assoc=right> pow);
 
 fact        : '('expr')' | INT;
