@@ -2,7 +2,10 @@ grammar Syntaxerkenner_a2_;
 import Lexer;
 
 prog    : stat+;
-stat    : expr? NL;
+stat    : decl? NL;
+decl    : (ID '=')? comp;
+comp    : expr (('<' | '>') expr)*;
 expr    : term (('+' | '-') term)*;
-term    : fact (('*' | '/') fact)*;
+term    : pow (('*' | '/') pow)*;
+pow     : <assoc=right> fact ('^' pow)*;
 fact    : ('+' | '-') fact | '(' expr ')' | INT;

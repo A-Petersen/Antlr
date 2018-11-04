@@ -1,8 +1,9 @@
 grammar Syntaxerkenner_a1_;
 import Lexer;
 
-//expr    : (expr ('+' | '-'))? term;
-//term    : (term ('*' | '/'))? fact;
-expr    : term | expr '+' term | expr '-' term;
-term    : fact | term '/' fact | term '*' fact;
+decl    : (ID '=')? comp;
+comp    : expr | comp ('<' | '>') expr;
+expr    : term | expr ('+' | '-') term;
+term    : pow | term ('/' | '*') pow;
+pow     : fact |<assoc=right> fact '^' pow;
 fact    : INT | '('expr')';

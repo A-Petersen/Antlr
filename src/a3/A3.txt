@@ -1,4 +1,4 @@
-Aufgabe 1
+Aufgabe 1.3
 
 Gegeben sei folgende Grammatik für die Ausdruckssprache Expr:
 
@@ -25,5 +25,3 @@ d) Bestimmen Sie die Assoziativitäten und Prioritäten aller Operatoren!
     - legt weder die Priorität noch die Assoziativität der Operatoren fest.
 
 e) Geben Sie den Syntaxbaum für folgende Eingabe an: 10 * 2 / 2 + 4
-
-h) Schreiben Sie einen JUnit-Test!

@@ -1,4 +1,5 @@
-Aufgabe 1
+Aufgabe 1.1
+
 Gegeben sei folgende Grammatik:
 
 Γ6 = N6 , T6 , P6 ,expr
