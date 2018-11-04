@@ -7,5 +7,5 @@ decl    : (ID '=')? comp;
 comp    : expr (('<' | '>') expr)*;
 expr    : term (('+' | '-') term)*;
 term    : pow (('*' | '/') pow)*;
-pow     : <assoc=right> fact ('^' pow)*;
-fact    : ('+' | '-') fact | '(' expr ')' | INT;
+pow     : <assoc=right> fact ('^' fact)*;
+fact    : ('+' | '-') fact | '(' decl ')' | INT;

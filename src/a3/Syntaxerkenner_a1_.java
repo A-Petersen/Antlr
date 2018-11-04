@@ -20,7 +20,7 @@ public class Syntaxerkenner_a1_ {
             CommonTokenStream token = new CommonTokenStream(lex);
             Syntaxerkenner_a1_Parser parser = new Syntaxerkenner_a1_Parser(token);
 
-            ParseTree tree = parser.expr();
+            ParseTree tree = parser.decl();
             testString = tree.toStringTree(parser);
             System.out.println(testString);
 
