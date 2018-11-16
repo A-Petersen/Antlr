@@ -1,0 +1,34 @@
+
+Aufgabe 1: Syntaxgesteuerte Definition, Übersetzungsschema
+
+a)Entwerfen Sie eine syntaxgesteuerte Definition für einen Kalkulator, der arithmetische
+Ausdrücke auswertet, die gemäß der unten gegebenen Grammatik aufgebaut sind.
+
+𝐍 = {stat, expr}
+𝐓 = { 𝐢𝐧𝐭 ,+ ,−,∗ , ( , ), 𝐧 }
+𝐏 =
+stat → expr 𝐧 | 𝐧
+expr → 𝐢𝐧𝐭
+expr → expr + expr
+expr → expr − expr
+expr → expr ∗ expr
+expr → expr/expr
+expr → (expr)
+
+Semantische Regel =
+stat.v = expr.v
+expr.v = int.v
+expr.v = expr1.v + expr2.v
+expr.v = expr1.v - expr2.v
+expr.v = expr1.v * expr2.v
+expr.v = expr1.v / expr2.v
+expr.v = expr1.v
+
+c)
+stat → expr 𝐧 | 𝐧
+expr → 𝐢𝐧𝐭 { print('0-9') }
+expr → expr + { print('+') } expr
+expr → expr − { print('-') } expr
+expr → expr ∗ { print('*') } expr
+expr → expr / { print('/') } expr
+expr → ( { print('(') } expr ) { print(')') }
