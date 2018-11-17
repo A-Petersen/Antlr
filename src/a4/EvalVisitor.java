@@ -21,7 +21,7 @@ public class EvalVisitor extends KalkulatorBaseVisitor<Integer> {
     public Integer visitPrintExpr(KalkulatorParser.PrintExprContext ctx) {
         Integer value = visit(ctx.expr()); // evaluate the expr child
         System.out.println(value);         // print the result
-        return 0;                          // return dummy value
+        return value;                          // return dummy value
     }
 
     /** INT */
