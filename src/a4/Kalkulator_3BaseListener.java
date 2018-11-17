@@ -15,25 +15,61 @@ public class Kalkulator_3BaseListener implements Kalkulator_3Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStat(Kalkulator_3Parser.StatContext ctx) { }
+	@Override public void enterProg(Kalkulator_3Parser.ProgContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStat(Kalkulator_3Parser.StatContext ctx) { }
+	@Override public void exitProg(Kalkulator_3Parser.ProgContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDiv(Kalkulator_3Parser.DivContext ctx) { }
+	@Override public void enterCalc(Kalkulator_3Parser.CalcContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDiv(Kalkulator_3Parser.DivContext ctx) { }
+	@Override public void exitCalc(Kalkulator_3Parser.CalcContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterNl(Kalkulator_3Parser.NlContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNl(Kalkulator_3Parser.NlContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAssign(Kalkulator_3Parser.AssignContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAssign(Kalkulator_3Parser.AssignContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterClear(Kalkulator_3Parser.ClearContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitClear(Kalkulator_3Parser.ClearContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -75,13 +111,49 @@ public class Kalkulator_3BaseListener implements Kalkulator_3Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMult(Kalkulator_3Parser.MultContext ctx) { }
+	@Override public void enterBig(Kalkulator_3Parser.BigContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMult(Kalkulator_3Parser.MultContext ctx) { }
+	@Override public void exitBig(Kalkulator_3Parser.BigContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCond(Kalkulator_3Parser.CondContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCond(Kalkulator_3Parser.CondContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSmall(Kalkulator_3Parser.SmallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSmall(Kalkulator_3Parser.SmallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterIfElse(Kalkulator_3Parser.IfElseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIfElse(Kalkulator_3Parser.IfElseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -94,6 +166,66 @@ public class Kalkulator_3BaseListener implements Kalkulator_3Listener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitInt(Kalkulator_3Parser.IntContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDiv(Kalkulator_3Parser.DivContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDiv(Kalkulator_3Parser.DivContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMult(Kalkulator_3Parser.MultContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMult(Kalkulator_3Parser.MultContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterEqual(Kalkulator_3Parser.EqualContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitEqual(Kalkulator_3Parser.EqualContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterPow(Kalkulator_3Parser.PowContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPow(Kalkulator_3Parser.PowContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterId(Kalkulator_3Parser.IdContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitId(Kalkulator_3Parser.IdContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

@@ -1,13 +1,25 @@
 grammar Kalkulator_3;
 import Lexer;
 
-stat    :   expr NL
-            | NL
+prog    : stat+;
+
+stat    :   expr NL             # Calc
+            | NL                # Nl
+            | ID '=' expr NL    # Assign
+            | 'clear' NL        # Clear
             ;
+
 expr    :   '(' expr ')'      # Bracket
+            | <assoc=right> expr POW expr   # Pow
             | expr MUL expr   # Mult
             | expr DIV expr   # Div
             | expr ADD expr   # Add
             | expr SUB expr   # Sub
-            | INT             # int
+            | expr EQU expr   # Equal
+            | expr SMA expr   # Small
+            | expr BIG expr   # Big
+            | expr '?' expr ':' expr    # Cond
+            | 'if''(' expr ')''{' expr '}''else''{' expr '}'    # IfElse
+            | INT                       # int
+            | ID                        # Id
             ;

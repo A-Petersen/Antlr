@@ -9,17 +9,23 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 import javax.swing.*;
+import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 public class Calc_3 {
     public static int testInt;
 
-    public static int test(String str) {
-        ANTLRInputStream input = new ANTLRInputStream(str);
+    public static int test(String str) throws IOException {
+        InputStream is = new ByteArrayInputStream(str.getBytes(StandardCharsets.UTF_8));
+        ANTLRInputStream input = new ANTLRInputStream(is);
         Kalkulator_3Lexer lex = new Kalkulator_3Lexer(input);
         CommonTokenStream token = new CommonTokenStream(lex);
         Kalkulator_3Parser parser = new Kalkulator_3Parser(token);
-        ParseTree tree = parser.stat();
+        ParseTree tree = parser.prog();
         ParseTreeWalker walker = new ParseTreeWalker();
         EvalWithProps evalProb = new EvalWithProps();
 
@@ -29,16 +35,18 @@ public class Calc_3 {
     }
 
     public static void main(String[] args) throws Exception {
-        CharStream input;
-        if (args.length>0) input = new ANTLRFileStream(args[0]);
-        else input = new ANTLRInputStream(System.in);
+        String inputFile = null;
+        if (args.length>0) inputFile = args[0];
+        InputStream is = System.in;
+        if (inputFile != null) is = new FileInputStream(inputFile);
+        ANTLRInputStream input = new ANTLRInputStream(is);
 
         Kalkulator_3Lexer lex = new Kalkulator_3Lexer(input);
         CommonTokenStream token = new CommonTokenStream(lex);
         Kalkulator_3Parser parser = new Kalkulator_3Parser(token);
 
-        ParseTree tree = parser.stat();
-//        viewTree(tree, parser);
+        ParseTree tree = parser.prog();
+        viewTree(tree, parser);
 
         ParseTreeWalker walker = new ParseTreeWalker();
         EvalWithProps evalProb = new EvalWithProps();
