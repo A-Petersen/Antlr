@@ -25,7 +25,12 @@ public class Calc_2 {
             lexer.setCharPositionInLine(0);
             CommonTokenStream token = new CommonTokenStream(lexer);
             parser.setInputStream(token);
-            testMe = parser.stat().expr.v;
+            if (!expr.equals("clear")) {
+                testMe = parser.stat().expr.v;
+            } else {
+                parser.stat();
+                System.out.println("ClearMem_Main");
+            }
             expr = br.readLine();
             if (expr.equals("end")) break;
         }
@@ -52,10 +57,14 @@ public class Calc_2 {
             lexer.setCharPositionInLine(0);
             CommonTokenStream token = new CommonTokenStream(lexer);
             parser.setInputStream(token);
-            testMe = parser.stat().expr.v;
+            if (!expr.equals("clear")) {
+                testMe = parser.stat().expr.v;
+            } else {
+                parser.stat();
+                System.out.println("ClearMem_Main");
+            }
             expr = br.readLine();
             line++;
-            System.out.println("(" + expr + ")");
             if (expr.equals("end")) break;
         }
         System.out.println("Fin: " + testMe);

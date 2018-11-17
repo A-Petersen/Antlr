@@ -25,21 +25,20 @@ import java.util.*;
     }
 }
 
-prog    :   stat+              {System.out.println($stat.v);}
-            ;
+prog    :   stat+;
 
-stat    :   expr NL             {System.out.println($expr.v);}
+stat    :   'clear' NL        {System.out.println("ClearMem"); memory.clear();}
+            |expr NL             {System.out.println($expr.v);}
             | ID '=' expr NL    {memory.put($ID.text, $expr.v);}
-            | 'clear' NL        {memory.clear();}
             | NL;
 
 expr returns [int v]
             :   '(' expr ')'        {$v = $expr.v;}
-            | <assoc=right> a=expr '^' b=expr           {$v = calc($a.v, $op.type, $b.v);}
+            | <assoc=right> a=expr op='^' b=expr           {$v = calc($a.v, $op.type, $b.v);}
             | a=expr op=('*'|'/') b=expr   {$v = calc($a.v, $op.type, $b.v);}
             | a=expr op=('+'|'-') b=expr   {$v = calc($a.v, $op.type, $b.v);}
             | a=expr op=('<'|'>') b=expr   {$v = calc($a.v, $op.type, $b.v);}
-            | a=expr '==' b=expr    {$v = calc($a.v, $op.type, $b.v);}
+            | a=expr op='==' b=expr    {$v = calc($a.v, $op.type, $b.v);}
             | INT                   {$v = $INT.int;}
             | ID                    {   String id = $ID.text;
                                         $v = memory.containsKey(id) ? memory.get(id) : 0;

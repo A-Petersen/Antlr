@@ -8,32 +8,40 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import javax.swing.*;
+import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 public class Calc_1 {
 
     public static int testInt;
 
-    public static int test(String str) {
-        ANTLRInputStream input = new ANTLRInputStream(str);
+    public static int test(String str) throws IOException {
+        InputStream is = new ByteArrayInputStream(str.getBytes(StandardCharsets.UTF_8));
+        ANTLRInputStream input = new ANTLRInputStream(is);
         KalkulatorLexer lex = new KalkulatorLexer(input);
         CommonTokenStream token = new CommonTokenStream(lex);
         KalkulatorParser parser = new KalkulatorParser(token);
         EvalVisitor eval = new EvalVisitor();
-        ParseTree tree = parser.stat();
+        ParseTree tree = parser.prog();
         return eval.visit(tree);
     }
 
     public static void main(String[] args) throws Exception {
-        CharStream input;
-        if (args.length>0) input = new ANTLRFileStream(args[0]);
-        else input = new ANTLRInputStream(System.in);
+        String inputFile = null;
+        if (args.length>0) inputFile = args[0];
+        InputStream is = System.in;
+        if (inputFile != null) is = new FileInputStream(inputFile);
+        ANTLRInputStream input = new ANTLRInputStream(is);
 
         KalkulatorLexer lex = new KalkulatorLexer(input);
         CommonTokenStream token = new CommonTokenStream(lex);
         KalkulatorParser parser = new KalkulatorParser(token);
 
-        ParseTree tree = parser.stat();
+        ParseTree tree = parser.prog();
         viewTree(tree, parser);
 
         EvalVisitor eval = new EvalVisitor();
