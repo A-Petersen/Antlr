@@ -19,6 +19,18 @@ public class Kalkulator_2BaseListener implements Kalkulator_2Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterProg(Kalkulator_2Parser.ProgContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitProg(Kalkulator_2Parser.ProgContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterStat(Kalkulator_2Parser.StatContext ctx) { }
 	/**
 	 * {@inheritDoc}

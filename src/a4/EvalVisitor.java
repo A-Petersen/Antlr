@@ -6,7 +6,7 @@ import java.util.Map;
 public class EvalVisitor extends KalkulatorBaseVisitor<Integer> {
 //    /** "memory" for our calculator; variable/value pairs go here */
 //    Map<String, Integer> memory = new HashMap<String, Integer>();
-
+//
 //    /** ID '=' expr NEWLINE */
 //    @Override
 //    public Integer visitAssign(KalkulatorParser.AssignContext ctx) {

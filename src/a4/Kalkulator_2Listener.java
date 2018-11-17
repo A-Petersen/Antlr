@@ -11,6 +11,16 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface Kalkulator_2Listener extends ParseTreeListener {
 	/**
+	 * Enter a parse tree produced by {@link Kalkulator_2Parser#prog}.
+	 * @param ctx the parse tree
+	 */
+	void enterProg(Kalkulator_2Parser.ProgContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Kalkulator_2Parser#prog}.
+	 * @param ctx the parse tree
+	 */
+	void exitProg(Kalkulator_2Parser.ProgContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link Kalkulator_2Parser#stat}.
 	 * @param ctx the parse tree
 	 */
