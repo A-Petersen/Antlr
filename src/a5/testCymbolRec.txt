@@ -1,0 +1,39 @@
+digraph G {
+  ranksep=0.25;
+  edge [arrowsize=0.5];
+  node[margin=0 fontcolor=blue fontsize=32 width=0.5 shape=circle style=filled];
+  odd; ggT[fillcolor=green]; even1[fillcolor=green]; even2[fillcolor=red]; binomi; ulam[fillcolor=green]; even3[fillcolor=red]; summe[fillcolor=red]; main; fact[fillcolor=red]; even; ackermann[fillcolor=green]; add[fillcolor=green]; mcCarthy[fillcolor=green]; identity; fibo[fillcolor=red]; add2[fillcolor=green];
+  main -> summe;
+  main -> fibo;
+  main -> ggT;
+  main -> binomi; 
+  binomi -> fact;
+  binomi -> fact;
+  binomi -> fact; 
+  add -> identity[color=green];
+  add -> add[color=green]; 
+  add2 -> add2[color=green];
+  add2 -> identity[color=green]; 
+  summe -> summe[color=red];
+  summe -> add2[color=green]; 
+  fact -> fact[color=red]; 
+  ggT -> ggT[color=green];
+  ggT -> ggT[color=green]; 
+  fibo -> fibo[color=red];
+  fibo -> fibo[color=red];
+  fibo -> add[color=green]; 
+  even -> odd[color=green]; 
+  odd -> even[color=green]; 
+  even1 -> even1[color=green]; 
+  even2 -> even2[color=red]; 
+  even3 -> even3[color=red]; 
+  mcCarthy -> mcCarthy[color=red];
+  mcCarthy -> mcCarthy[color=green]; 
+  ulam -> even;
+  ulam -> ulam[color=green];
+  ulam -> ulam[color=green]; 
+  ackermann -> ackermann[color=green];
+  ackermann -> ackermann[color=red];
+  ackermann -> ackermann[color=green]; 
+
+}

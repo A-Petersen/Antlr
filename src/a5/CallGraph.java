@@ -9,6 +9,9 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.misc.MultiMap;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
+import org.stringtemplate.v4.ST;
+import org.stringtemplate.v4.STGroup;
+import org.stringtemplate.v4.STGroupFile;
 
 import javax.swing.*;
 
@@ -23,35 +26,21 @@ public class CallGraph {
         }
 
         public String toDOT() throws IOException {
-            StringBuilder builder = new StringBuilder();
 
-            /** config */
-            builder.append("digraph G { \n");
-            builder.append("  ranksep=.25;\n");
-            builder.append("  edge [arrowsize=.5]\n");
-            builder.append("  node[margin=0 fontcolor=blue fontsize=32 width=0.5 shape=circle style=filled]\n");
-            builder.append("   ");
+            STGroup stG = new STGroupFile("a5/stringTemplateDOT.stg");
+            ST dot = stG.getInstanceOf("DOT");
+            dot.add("ranksep", .25);
+            dot.add("arrowsize", .5);
+            dot.add("margin", 0);
+            dot.add("fontcolor", "blue");
+            dot.add("fontsize", 32);
+            dot.add("width", 0.5);
+            dot.add("shape", "circle");
+            dot.add("style", "filled");
+            dot.add("nodes", nodes);
+            dot.add("edges", edges);
 
-            /** node */
-            for(String node[] : nodes) {
-                builder.append(node[0] + node[1]);
-                builder.append("; ");
-            }
-            builder.append("\n");
-
-            /** edge */
-            for(String src : edges.keySet()) {
-                for (String trg : edges.get(src)) {
-                    builder.append(" ");
-                    builder.append(src);
-                    builder.append(" -> ");
-                    builder.append(trg);
-                    builder.append(";\n");
-                }
-            }
-            builder.append("}\n");
-
-            return builder.toString();
+            return dot.render();
         }
 
     }
@@ -73,34 +62,22 @@ public class CallGraph {
             graph.nodes.add(currentFunctionName);
         }
 
-//        @Override
-//        public void exitFunctionDecl(CymbolParser.FunctionDeclContext ctx) {
-//            if (endRecFunct) {
-//                graph.nodes.remove(currentFunctionName);
-//                graph.nodes.add(currentFunctionName + "[fillcolor=green]");
-//            }
-//            if (notEndFunc) {
-//                graph.nodes.remove(currentFunctionName);
-//                graph.nodes.add(currentFunctionName + "[fillcolor=red]");
-//            }
-//        }
-
         /**
          * expr    :   ID '(' exprList? ')'    #Call
          */
         @Override
         public void exitCall(CymbolParser.CallContext ctx) {
             String funcName = ctx.ID().getText();
-            System.out.println("exitCall: " + ctx.parent.getText());
+//            System.out.println("exitCall: " + ctx.parent.getText());
             boolean inReturnState = false;
             if (ctx.parent.getText().length() >= 6 + currentFunctionName[0].length()) {
                 inReturnState = ctx.parent.getText().substring(0, 6 + currentFunctionName[0].length() ).contains("return" + currentFunctionName[0]);
-                System.out.println(inReturnState);
+//                System.out.println(inReturnState);
             }
             boolean externFuncInReturn = false;
             if (ctx.parent.getText().length() >= 6 + funcName.length()) {
                 externFuncInReturn = ctx.parent.getText().substring(0,6 + funcName.length()).contains("return" + funcName);
-                System.out.println(externFuncInReturn);
+//                System.out.println(externFuncInReturn);
             }
             boolean endRecFunct = (inReturnState && containsRecursion);
             boolean notEndFunc = (!inReturnState && containsRecursion);
@@ -135,15 +112,15 @@ public class CallGraph {
             containsRecursion = false;
             containsRecursion = ctx.expr().getText().contains(currentFunctionName[0]);
 
-            System.out.println("\n-----------");
-            System.out.println("exitReturn: " + ctx.expr().getText());
-            System.out.println("exitReturn recursiv: " + ctx.expr().getText().contains(currentFunctionName[0]));
-            System.out.println("------------\n");
+//            System.out.println("\n-----------");
+//            System.out.println("exitReturn: " + ctx.expr().getText());
+//            System.out.println("exitReturn recursiv: " + ctx.expr().getText().contains(currentFunctionName[0]));
+//            System.out.println("------------\n");
         }
     }
 
     /**
-     * Data:
+     *
      int main() { fact(); a(); }
      float fact(int n) {
      print(n);
@@ -189,8 +166,8 @@ public class CallGraph {
         ParseTreeWalker walker = new ParseTreeWalker();
         FunctionListener collector = new FunctionListener();
         walker.walk(collector, tree);
-        System.out.println("Nodes: " + collector.graph.nodes.toString() + "\nEdges: " + collector.graph.edges.toString() + "\n");
-        System.out.println(collector.graph.toDOT());
+//        System.out.println("Nodes: " + collector.graph.nodes.toString() + "\nEdges: " + collector.graph.edges.toString() + "\n");
+//        System.out.println(collector.graph.toDOT());
         writeFile(collector.graph.toDOT(),"newDot");
 
     }
