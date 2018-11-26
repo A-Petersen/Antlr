@@ -3,8 +3,8 @@ digraph G {
   ranksep=<ranksep>;
   edge [arrowsize=<arrowsize>];
   node[margin=<margin> fontcolor=<fontcolor> fontsize=<fontsize> width=<width> shape=<shape> style=<style>];
-  <nodes :{node | <node>; }>
-  <edges.keys:{k | <edges.(k) :{v | <k> -> <v>;}; separator="\n"> }; separator="\n">
+  <nodes :{node |<node>;}>
+  <edges.keys:{k | <edges.(k) :{v |<k> -> <v>;}; separator="\n">}; separator="\n">
 
 }
 >>

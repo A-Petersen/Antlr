@@ -81,7 +81,7 @@ public class CallGraph {
             }
             boolean endRecFunct = (inReturnState && containsRecursion);
             boolean notEndFunc = (!inReturnState && containsRecursion);
-            /** map current function to the calle */
+
             if (externFuncInReturn || inReturnState) {
                 graph.edge(currentFunctionName[0], funcName + "[color=green]");
             } else {
