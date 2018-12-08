@@ -26,8 +26,18 @@ public class LexAnalysator {
         state[0] = table.keySet().stream().filter(x -> x[1].equals("_start")).collect(Collectors.toList()).get(0)[0];
         for (String str : stringList) {
 
-            state[0] = table.entrySet().stream().filter(x -> x.getKey()[0].equals(state[0])).collect(Collectors.toList()).get(0)
-                    .getValue().entrySet().stream().filter(x -> x.getKey().equals(str)).collect(Collectors.toList()).get(0).getValue();
+            state[0] = table.entrySet()
+                    .stream()
+                    .filter(x -> x.getKey()[0].equals(state[0]))
+                    .collect(Collectors.toList())
+                    .get(0)
+                    .getValue()
+                        .entrySet()
+                        .stream()
+                        .filter(x -> x.getKey().equals(str))
+                        .collect(Collectors.toList())
+                        .get(0)
+                        .getValue();
 
             if (state[0] == "\u03A9") return "Error";
         }

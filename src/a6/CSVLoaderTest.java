@@ -27,7 +27,7 @@ public class CSVLoaderTest {
     public static List<String> A1_Error = Arrays.asList("1", "0");
 
     @Test
-    public void csvTest_2() throws Exception {
+    public void csvTest_1() throws Exception {
         InputStream is = new FileInputStream("X:\\IntellijProjects\\Antlr\\src\\a6\\automat_A1.csv");
         CSVLexer lexer = new CSVLexer( new ANTLRInputStream(is) );
         CommonTokenStream tokens = new CommonTokenStream(lexer);
@@ -40,11 +40,11 @@ public class CSVLoaderTest {
         walker.walk(loader, tree);
 
         LexAnalysator lexAnalysator = new LexAnalysator();
-        String result = lexAnalysator.automat(A2_Sucess, loader.table);
+        String result = lexAnalysator.automat(A1_Sucess, loader.table);
 
-        String result1 = lexAnalysator.automat(A2_Omega, loader.table);
+        String result1 = lexAnalysator.automat(A1_Omega, loader.table);
 
-        String result2 = lexAnalysator.automat(A2_Error, loader.table);
+        String result2 = lexAnalysator.automat(A1_Error, loader.table);
 
         Assert.assertEquals(result, sucess);
         Assert.assertEquals(result1, error);
@@ -59,7 +59,7 @@ public class CSVLoaderTest {
     public static List<String> A2_Error = Arrays.asList("b", "a", "b", "b");
 
     @Test
-    public void csvTest_1() throws Exception {
+    public void csvTest_2() throws Exception {
         InputStream is = new FileInputStream("X:\\IntellijProjects\\Antlr\\src\\a6\\automat_test.csv");
         CSVLexer lexer = new CSVLexer( new ANTLRInputStream(is) );
         CommonTokenStream tokens = new CommonTokenStream(lexer);
