@@ -1,6 +1,6 @@
 ,1,0
 START_start,E,N
-E,EE,
-EE_end,EE,N
-N,,NE
-NE_end,E,NE
+E,EEnd,
+EEnd_end,EEnd,N
+N,,NEnd
+NEnd_end,E,NEnd
