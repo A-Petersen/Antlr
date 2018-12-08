@@ -17,18 +17,18 @@ public class CallGraphTest {
 
     @Test
     public void callGraphRec() throws Exception {
-        String[] content = {"X:\\IntellijProjects\\Antlr\\src\\a5\\rec.cymbol"};
+        String[] content = {"C:\\Users\\Arne\\Documents\\Intellij_Projekte\\Antlr_pc\\src\\a5\\rec.cymbol"};
         CallGraph.main(content);
-        String result = readFile("X:\\IntellijProjects\\Antlr\\newDot.txt", StandardCharsets.UTF_8);
+        String result = readFile("C:\\Users\\Arne\\Documents\\Intellij_Projekte\\Antlr_pc\\newDot.txt", StandardCharsets.UTF_8);
         List<String> resultList = Arrays.asList(result.split(";"));
-        String compare = readFile("X:\\IntellijProjects\\Antlr\\src\\a5\\testCymbolRec.txt", StandardCharsets.UTF_8);
+        String compare = readFile("C:\\Users\\Arne\\Documents\\Intellij_Projekte\\Antlr_pc\\src\\a5\\testCymbolRec.txt", StandardCharsets.UTF_8);
         List<String> objectsList = Arrays.asList(compare.split(";"));
 
         assertEquals(resultList.size(), objectsList.size());
 
         resultList.forEach(x -> {
             if (objectsList.stream().anyMatch(y -> y.equals(x)) == false) {
-                System.out.println(x);
+                System.out.println("Failure at: [" + x + "]");
             }
         } );
 
