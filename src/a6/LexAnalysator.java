@@ -6,18 +6,6 @@ import java.util.stream.Collectors;
 
 public class LexAnalysator {
 
-    public static void main(String[] args) {
-        y.put('a', "Z1");
-        y.put('a', "Z1");
-        y.put('a', "Z1");
-        x.put("a", y);
-        x.put("b", y);
-        x.put("c", y);
-
-        System.out.println(x.get("b").put('a', "x!"));
-        System.out.println(x.get("b").get('a'));
-    }
-
     private static HashMap<String, HashMap<Character, String>> x = new HashMap<>();
     private static HashMap<Character, String> y = new HashMap<>();
 

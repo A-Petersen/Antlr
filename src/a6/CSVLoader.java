@@ -110,16 +110,11 @@ public class CSVLoader extends CSVBaseListener {
                                 if (!y.getKey().equals("") && !y.getValue().equals("")) {
                                     edges.map(x.getKey()[0], y.getValue() + "[label=\"" + y.getKey() + "\"]" );
                                 }
-//                                else if (!y.getKey().equals("") && y.getValue().equals("")) {
-//                                    edges.map(x.getKey()[0], "\u03A9" + "[label=\"" + y.getKey() + "\"]" );
-//                                }
                             });
 
                     }
                 }
             );
-        System.out.println(nodes);
-        System.out.println(edges);
     }
 
     @SuppressWarnings("Duplicates")

@@ -41,9 +41,7 @@ public class CSVLoaderTest {
 
         LexAnalysator lexAnalysator = new LexAnalysator();
         String result = lexAnalysator.automat(A1_Sucess, loader.table);
-
         String result1 = lexAnalysator.automat(A1_Omega, loader.table);
-
         String result2 = lexAnalysator.automat(A1_Error, loader.table);
 
         Assert.assertEquals(result, sucess);
