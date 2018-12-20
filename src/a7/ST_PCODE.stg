@@ -1,0 +1,19 @@
+program (gVar, numGVars, functions) ::= <<
+.globals <numGVars>; <functions; seperator="\n">
+>>
+
+main (function) ::= <<
+<function>
+halt
+>>
+
+function (name, args, locals, block) ::= <<
+.def <name>: args=<args>, locals=<locals>
+<block>
+ret
+>>
+
+ifElse (condition, stat1, stat2) ::= <<
+<condition>
+
+>>
