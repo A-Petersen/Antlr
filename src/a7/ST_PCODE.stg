@@ -1,5 +1,6 @@
 program (gVar, numGVars, functions) ::= <<
-.globals <numGVars>; <functions; seperator="\n">
+.globals <numGVars>; <functions; separator="\n">
+
 >>
 
 main (function) ::= <<
@@ -13,7 +14,57 @@ function (name, args, locals, block) ::= <<
 ret
 >>
 
+block (state) ::= <<
+<state; separator="\n">
+>>
+
+statement (state) ::= <<
+<state>
+>>
+
 ifElse (condition, stat1, stat2) ::= <<
 <condition>
 
 >>
+
+assign (v, index) ::= <<
+    iconst <v>
+    gstore <index>
+>>
+
+id_ (id) ::= <<
+<id>
+>>
+
+int_ (v) ::= <<
+<v>
+>>
+
+returnStat (expr) ::= <<
+<expr>
+ret
+>>
+
+printStat (expr) ::= <<
+<expr>
+print
+>>
+
+MUL (left, right) ::= <<
+<left>
+<right>
+imul
+>>
+
+ADD (left, right) ::= <<
+<left>
+<right>
+iadd
+>>
+
+SUB (left, right) ::= <<
+<left>
+<right>
+isub
+>>
+
