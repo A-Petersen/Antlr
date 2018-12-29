@@ -5,13 +5,13 @@ program (gVar, numGVars, functions) ::= <<
 >>
 
 main (function, args, locals, block) ::= <<
-.def main: args=<args>, locals=0
+.def main: args=0, locals=0
 <block>
     halt
 >>
 
 function (name, args, locals, block) ::= <<
-.def <name>: args=<args>, locals=0
+.def <name>: args=0, locals=0
 <block>
     ret
 >>
@@ -24,28 +24,45 @@ statement (state) ::= <<
 <state>
 >>
 
-ifElse (condition, stat1, stat2) ::= <<
-ifElse:
-<condition>
-    brt true
-    br false
-true:
-<stat1>
-    br ifElseEnd
-false:
-<stat2>
-ifElseEnd:
+call (expr) ::= <<
+    call <expr>
 >>
 
-for (assign1, binOp, assign2, block) ::= <<
+cond (condition, stat1, stat2, nr) ::= <<
+ifElse<nr>:
+<condition>
+    brt true<nr>
+    br false<nr>
+true<nr>:
+<stat1>
+    br ifElseEnd<nr>
+false<nr>:
+<stat2>
+ifElseEnd<nr>:
+>>
+
+ifElse (condition, stat1, stat2, nr) ::= <<
+if<nr>:
+<condition>
+    brt true<nr>
+    br false<nr>
+true<nr>:
+<stat1>
+    br ifEnd<nr>
+false<nr>:
+<stat2>
+ifEnd<nr>:
+>>
+
+for (assign1, binOp, assign2, block, nr) ::= <<
 <assign1>
-loop:
+loop<nr>:
 <binOp>
-    brf done
+    brf done<nr>
 <block>
 <assign2>
-    br loop
-done:
+    br loop<nr>
+done<nr>:
 >>
 
 case (binOp) ::= <<
@@ -65,9 +82,16 @@ int_ (v) ::= <<
     iconst <v>
 >>
 
+true_ () ::= <<
+    iconst 1
+>>
+
+false_ () ::= <<
+    iconst 0
+>>
+
 returnStat (expr) ::= <<
 <expr>
-    ret
 >>
 
 printStat (expr) ::= <<
@@ -75,37 +99,51 @@ printStat (expr) ::= <<
     print
 >>
 
-MUL (left, right) ::= <<
+MUL (left, right, nr) ::= <<
 <left>
 <right>
     imul
 >>
 
-ADD (left, right) ::= <<
+ADD (left, right, nr) ::= <<
 <left>
 <right>
     iadd
 >>
 
-SUB (left, right) ::= <<
+SUB (left, right, nr) ::= <<
 <left>
 <right>
     isub
 >>
 
-EQU (left, right) ::= <<
+EQU (left, right, nr) ::= <<
 <left>
 <right>
     ieq
 >>
 
-SMA (left, right) ::= <<
+NEQ (left, right, nr) ::= <<
+<left>
+<right>
+    ieq
+    brt toNull<nr>
+    br toOne<nr>
+toNull<nr>:
+    iconst 0
+    br end<nr>
+toOne<nr>:
+    iconst 1
+end<nr>:
+>>
+
+SMA (left, right, nr) ::= <<
 <left>
 <right>
     ilt
 >>
 
-BIG (left, right) ::= <<
+BIG (left, right, nr) ::= <<
 <right>
 <left>
     ilt

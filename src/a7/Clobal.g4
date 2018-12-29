@@ -46,3 +46,5 @@ expr:   '-' expr       #Negation
     |   ID '(' ')'        #Function
     ;
 
+WS          : [ \t\n\r]+ -> skip ;
+
