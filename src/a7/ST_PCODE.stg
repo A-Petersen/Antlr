@@ -1,17 +1,19 @@
 program (gVar, numGVars, functions) ::= <<
-.globals <numGVars>; <functions; separator="\n">
+.globals <numGVars>;
+<functions; separator="\n">
 
 >>
 
-main (function) ::= <<
-<function>
-halt
+main (function, args, locals, block) ::= <<
+.def main: args=<args>, locals=0
+<block>
+    halt
 >>
 
 function (name, args, locals, block) ::= <<
-.def <name>: args=<args>, locals=<locals>
+.def <name>: args=<args>, locals=0
 <block>
-ret
+    ret
 >>
 
 block (state) ::= <<
@@ -23,48 +25,88 @@ statement (state) ::= <<
 >>
 
 ifElse (condition, stat1, stat2) ::= <<
+ifElse:
 <condition>
+    brt true
+    br false
+true:
+<stat1>
+    br ifElseEnd
+false:
+<stat2>
+ifElseEnd:
+>>
 
+for (assign1, binOp, assign2, block) ::= <<
+<assign1>
+loop:
+<binOp>
+    brf done
+<block>
+<assign2>
+    br loop
+done:
+>>
+
+case (binOp) ::= <<
+<binOp>
 >>
 
 assign (v, index) ::= <<
-    iconst <v>
+<v>
     gstore <index>
 >>
 
 id_ (id) ::= <<
-<id>
+    gload <id>
 >>
 
 int_ (v) ::= <<
-<v>
+    iconst <v>
 >>
 
 returnStat (expr) ::= <<
 <expr>
-ret
+    ret
 >>
 
 printStat (expr) ::= <<
 <expr>
-print
+    print
 >>
 
 MUL (left, right) ::= <<
 <left>
 <right>
-imul
+    imul
 >>
 
 ADD (left, right) ::= <<
 <left>
 <right>
-iadd
+    iadd
 >>
 
 SUB (left, right) ::= <<
 <left>
 <right>
-isub
+    isub
 >>
 
+EQU (left, right) ::= <<
+<left>
+<right>
+    ieq
+>>
+
+SMA (left, right) ::= <<
+<left>
+<right>
+    ilt
+>>
+
+BIG (left, right) ::= <<
+<right>
+<left>
+    ilt
+>>

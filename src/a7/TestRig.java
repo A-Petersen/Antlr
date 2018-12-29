@@ -10,7 +10,7 @@ import java.io.InputStream;
 
 public class TestRig {
     public static void main(String[] args) throws Exception {
-        String example = "int n;int i;int main() {  n = 1;  i = 4;  return 0;}";
+        String example = "int n;int i;int main() {  n = 1;  for (i=0; i<3; i=i+1) {    n=2*n;  }  printf(n);  return 0;}";
 
         String inputFile = null;
         if ( args.length > 0 ) inputFile = args[0];
