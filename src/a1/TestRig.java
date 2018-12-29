@@ -26,10 +26,10 @@
 //            System.out.println(t);
 //        } while ( t.getType()!= Token.EOF );
 //
-////        STGroup test = new STGroupFile("a1/stringTemplateGroup.stg");
-////        ST st = test.getInstanceOf("abc");
-////        st.add("xyz", "hello, ").add("uvw", "du!");
-////        System.out.println(st.render());
+//        STGroup test = new STGroupFile("a1/stringTemplateGroup.stg");
+//        ST st = test.getInstanceOf("abc");
+//        st.add("xyz", "hello, ").add("uvw", "du!");
+//        System.out.println(st.render());
 //
 //    }
 //}

@@ -25,6 +25,7 @@ public class CallGraph {
             edges.map(source, target);
         }
 
+        @SuppressWarnings("Duplicates")
         public String toDOT() throws IOException {
 
             STGroup stG = new STGroupFile("a5/stringTemplateDOT.stg");

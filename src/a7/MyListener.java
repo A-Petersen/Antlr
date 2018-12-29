@@ -31,6 +31,7 @@ public class MyListener extends ClobalBaseListener {
         }
         if(verbose)System.out.println("\nexitFile:\n" + st.render());
         result = st.render();
+        System.out.println(result + "----------------------------------------\n");
         setST(ctx, st);
     }
 
